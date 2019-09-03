@@ -1,0 +1,3 @@
+Re-construct compute chain, generate efficient compute code sequences.
+1. Analysis and generate symbol algebra expression which the results is the final output.
+2. Use polyhedral model? to analysis all the expressions, and generate efficient compute code sequences.

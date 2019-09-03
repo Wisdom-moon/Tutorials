@@ -1,0 +1,17 @@
+libsvm data form: 
+    Each line contains an instance and is ended by a '\n' character.
+    For classification: label is an integer indicating the class label. Multi-class is supported, labels are separated by commas.
+    For regression, label is the target value which and by any real number.
+    For one-class SVM, label is not used and can be any number.
+    index is an integer starting from 1, value is a real number. Indices must be in ASCENDING order.
+    Fro precomputed kernels, the index starts from 0.
+
+label1[,label2] index1:value1 index2:value2
+
+database form:
+Table name : perf
+program_id  input_id  partition block time
+1-16	    0-48      1-56      1-224
+
+regression in sklearn:
+  Linear regression. from sklearn import linear_model

@@ -1,0 +1,3 @@
+HISTTIMEFORMAT="%Y-%m-%dT%H:%M:%S " history > shellhist
+
+GNUTERM=svg gnuplot shellhist_gp_pints.gp > shellhist_gp_points.svg

@@ -1,0 +1,2 @@
+Right now, in OpenCL Specification, it still not support Zero-Copy.
+Only little OpenCL implementations support.

@@ -1,0 +1,11 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\pagestyle{empty}
+\begin{document}
+A sinewave looks like \tikz\draw[domain=0:18.84, scale=.1] plot function{sin(x)};
+and a spiral looks like \tikz\draw[parametric, domain=0:18.84,scale=.1]
+    plot function{.2*t*cos(t), .2*t*sin(t)};.
+\end{document}

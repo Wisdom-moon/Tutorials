@@ -1,0 +1,3 @@
+The implementation of OpenCL on CPU, accelerators which have no hardware scheduler, has a limit execution model.
+The execution model of OpenCL is that all work items executed parallel, but one implement of OpenCL execute work items which within one work group executed serial.
+The difference of execution model maybe can support specific optimization opportunity.

@@ -1,0 +1,23 @@
+set term pdfcairo font "Times, 24" enhanced size 10,4
+set o '256.pdf'
+set style data histograms
+set style fill transparent solid 0.5 border lt -1
+set xtics ("InOCL\nopt" 0, "InOCL\nunopt" 1, \
+    "NvOCL\nopt" 2, "NvOCL\nunopt" 3, \
+    "CUDA\nopt" 4, "CUDA\nunopt" 5, \
+    "Zero\nCopy" 6)
+
+set bmargin 3
+
+set ylabel "Time (s)"
+set format y "%.1e"
+set logscale y
+unset mytics
+
+set xtics offset 0, graph 0.03
+set xtics scale 0
+
+plot '256.dat' u 1 t "H2D" , '' u 2 t "Execute", '' u 3 t "D2H", '' u 4 t "Total"
+#plot '256.dat' u 1 t "H2D" fs p 0, '' u 2 t "Execute" fs p 1, '' u 3 t "D2H" fs p 4, '' u 4 t "Total" fs p 5
+
+set o

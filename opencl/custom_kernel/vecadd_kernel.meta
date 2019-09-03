@@ -1,0 +1,50 @@
+/home/moon/work/bitbucket/tutorials/opencl/custom_kernel/vecadd_kernel.so
+num_args = 4
+num_locals = 0
+reqdx = 0
+reqdy = 0
+reqdz = 0
+
+arg_info[0]:
+type_name = float*
+name = a
+address_qualifier = 4507
+access_qualifier = 4512
+type_qualifier = 1
+type = 1
+is_local = 0
+is_set = 0
+type_size = 0
+
+arg_info[1]:
+type_name = float*
+name = b
+address_qualifier = 4507
+access_qualifier = 4512
+type_qualifier = 0
+type = 1
+is_local = 0
+is_set = 0
+type_size = 0
+
+arg_info[2]:
+type_name = float*
+name = result
+address_qualifier = 4507
+access_qualifier = 4513
+type_qualifier = 0
+type = 1
+is_local = 0
+is_set = 0
+type_size = 0
+
+arg_info[3]:
+type_name = uint
+name = n
+address_qualifier = 4510
+access_qualifier = 4515
+type_qualifier = 0
+type = 0
+is_local = 0
+is_set = 0
+type_size = 4

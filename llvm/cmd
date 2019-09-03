@@ -1,0 +1,4 @@
+
+Show the DAG.
+>clang -emit-llvm -S -O1 vecadd.c
+>llc -view-dag-combine1-dags vecadd.ll -o vecadd.o:

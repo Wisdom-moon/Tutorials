@@ -1,0 +1,10 @@
+cat xxx | xsel -b -i : redirect to system clipboard.
+for i in {1..10};do ./xxx;done
+
+cat ttt 1>>t 2>&1
+cat ttt &>t
+
+echo $RANDOM
+
+find . -name *_log -type f \( -name "intel" -prune \) -exec mv {} ./intel/ \;
+find . -type f -print0 | xargs -I{} -0 sed -i '/zp/d' {}
