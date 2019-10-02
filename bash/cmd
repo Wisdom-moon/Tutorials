@@ -8,3 +8,6 @@ echo $RANDOM
 
 find . -name *_log -type f \( -name "intel" -prune \) -exec mv {} ./intel/ \;
 find . -type f -print0 | xargs -I{} -0 sed -i '/zp/d' {}
+
+xinput list: list all input devices.
+xinput disable id: disable specific device.
