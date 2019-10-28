@@ -16,3 +16,7 @@ echo '[INFO] Kernel: 0.043 s' | awk '$1 == "[INFO]" || /Kernel/ {print $3}'
 
 awk 'BEGIN{srand(); print rand()}'
 awk 'BEGIN{srand()} / i/{print $1, $2, rand()}'  parabola.text > circles.text
+
+//getline: get the next line
+for i in 1 2;do echo $i; awk '$1 == "2mm" {getline; print $0}' ./raw | awk -v threads=$i '$3 == threads {print $4}';done
+for i in 1 2 3 4 5 6 7 8 12 16 32 64 96 128 256;do awk '$1 == "2mm" {getline; print $0}' ./raw | awk -v threads=$i '$2 == threads {printf $4"\t"} END{printf "\n"}';done | xsel -b -i

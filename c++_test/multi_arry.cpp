@@ -9,7 +9,7 @@ void test (double (*a)[12], double c[8][12], double d[1][8][12]) {
 }
 
 
-int main () 
+int main (int argc, char **argv) 
 {
 //  double ()[12] a; //invalid types ‘double[int]’ for array subscript
 //  double (*)[12] b; //expected primary-expression before ‘double’
@@ -48,4 +48,16 @@ int main ()
   //c is passed its value, t is passed its address.
   //Namely, no memory is copied, still only the origin memory.
   test (c, t, d);
+
+
+  int m, n;
+  m = atoi(argv[1]);
+  n = atoi(argv[2]);
+
+  int t_a[m][n];
+  int t_b[m][n];
+  char t_c[100];
+  printf("size = %d\n", sizeof (t_a));
+  printf("size = %d\n", sizeof (t_b));
+
 }
