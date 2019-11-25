@@ -50,6 +50,10 @@ int main(int argc, char *argv[]) {
   
   clerr = clGetPlatformIDs(1, &cpPlatform, NULL);
 
+  char platformName[32];
+  clerr = clGetPlatformInfo(cpPlatform, CL_PLATFORM_NAME, 32, platformName, NULL);
+  printf("[info] Platform name: %s\n", platformName);
+
   //@@ Get ID for the device
   
   //clerr = clGetDeviceIDs(cpPlatform[1], CL_DEVICE_TYPE_ACCELERATOR, 1, &device_id, NULL);
