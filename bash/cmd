@@ -8,3 +8,45 @@ echo $RANDOM
 
 find . -name *_log -type f \( -name "intel" -prune \) -exec mv {} ./intel/ \;
 find . -type f -print0 | xargs -I{} -0 sed -i '/zp/d' {}
+
+wget -r -l 2 https://pytorch.org/docs/stable/index.html
+
+ps -L -w opid,ppid,lwp,stat,wchan:22,cmd
+ps axl:display parent pid
+rpm2cpio *.rpm | cpio -div: unpack rpm packages.
+scp -P 10548 zp@114.67.37.2:/home/zp/benchmarks/parboil/par.tar .
+ssh -p 10548 zp@114.67.37.2
+sed -i "s/\-m64/\ /g" `grep "\-m64" -rl ./`
+sed -i "s/fPIC/fPIC\ \-O0\ \-ggdb\ \-g3\ /g" `find . -name flags.make`
+ssh -oStrictHostKeyChecking=no mic0 rm /tmp/coi_procs/profile.log
+
+ssh no passwd:
+ssh-keygen -t rsa
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@mic0:
+
+display GUI:
+1. Make sure /etc/ssh/sshd_config, X11Forwarding=yes
+2.ssh -X name@xxx
+3. That's done, open GUI programs.
+
+xrandr --output HDMI1 --left-of VGA1 --auto
+xrandr --output VGA1  --right-of HDMI1 --auto --rotate right
+awk '{if ($1== 2 && $2==12) print $3; if ($1== 14 && $2==42) print"\t"$3; if ($1== 55 && $2==220) print "\t\t"$3}' log-n4096-e4096
+grep -n xxx: display the match line no.
+du -sh /dir: display the size of dir.
+./configure --prefix=xxx
+cmake -DCMAKE_INSTALL_PREFIX=xxx ../
+cmake -DCMAKE_INSTALL_PREFIX=/home/moon/local -DLLVM_BUILD_DOCS=ON -DLLVM_ENABLE_SPHINX=ON -DSPHINX_OUTPUT_MAN=ON 
+lsb_release -a: display OS version info.
+readelf -x .comment a.out: display which compiler used when generate this program.
+ifconfig eth0 hw ether 001e67eb8238: change MAC addr.
+usermod -a -G group_name user_name: add user_name to group.
+route add -net 202.197.8.0/24 enp6s0f0: allow access to 202.197.8.x IP.
+export TERM=xterm: in host, can solve top display problem.
+touch `find hstream2/* -name '*'`: recursive modify files' time
+hwclock --set --date="06/21/18 17:10"
+data --set "06/21/18 17:10"
+tr -d "\r" < NetworkUtility.sh > cleaned.sh: Transfor windows style EOL "\r\n" into unix style EOL "\n"
+wget -r -l 2 https://pytorch.org/docs/stable/index.html: Recursive download files, limit the level of following links to 2.
+echo 3 > /proc/sys/vm/drop_caches: Release all cached memory.
+write user [tty]: Into message mode. Ctrl-D to end message.
