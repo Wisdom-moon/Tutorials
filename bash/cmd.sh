@@ -16,4 +16,3 @@ done
 #echo the firs arguments of this script.
 echo $1
 
-test -d ocl/parser || echo Yes
