@@ -16,8 +16,6 @@ ps axl:display parent pid
 rpm2cpio *.rpm | cpio -div: unpack rpm packages.
 scp -P 10548 zp@114.67.37.2:/home/zp/benchmarks/parboil/par.tar .
 ssh -p 10548 zp@114.67.37.2
-sed -i "s/\-m64/\ /g" `grep "\-m64" -rl ./`
-sed -i "s/fPIC/fPIC\ \-O0\ \-ggdb\ \-g3\ /g" `find . -name flags.make`
 ssh -oStrictHostKeyChecking=no mic0 rm /tmp/coi_procs/profile.log
 
 ssh no passwd:

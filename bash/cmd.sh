@@ -16,3 +16,4 @@ done
 #echo the firs arguments of this script.
 echo $1
 
+cut -f 1,2,3,4 raw.log > tt

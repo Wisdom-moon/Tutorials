@@ -1,0 +1,1 @@
+nvprof --kernels "BFS_kernel" --events divergent_branch,l2_subp0_read_sector_misses,l2_subp1_read_sector_misses,l2_subp0_total_read_sector_queries,l2_subp1_total_read_sector_queries ./vectoradd
