@@ -8,3 +8,5 @@ sed  's;../../bin;nvprof --kernels "BFS_kernel" --events divergent_branch,l2_sub
 
 sed -i "s/\-m64/\ /g" `grep "\-m64" -rl ./`
 sed -i "s/fPIC/fPIC\ \-O0\ \-ggdb\ \-g3\ /g" `find . -name flags.make`
+
+sed -i 's;for n in 1;for n in {1..20};g' `find . -name cmd.sh`

@@ -1,5 +1,8 @@
 x <- c(1,2,3,4,5,5,"a",2.3) #create a vector
 x <- read.table(header = FALSE, file = "data") #read data from file.
+para_num <- strtoi(args[2])
+
+y <- array(as.numeric(unlist(x)), dim=c(nrow(x),ncol(x))
 head(x): displat first 6 rows.
 hist(x$V1,breaks=30,xlim=c(0,5000),col="blue",border="black",ylim=c(0,40),xlab="Weight",ylab="Counts",main="Histogram of Car Weights"): Draw histogram picture.
 par(): set graphic parameters.
@@ -11,6 +14,7 @@ attributes(x):display its attributes.
 length(x):
 d<-as.character(x): Transform x into character.
 X<-cbind(a1, a2): combine vector a1 and a2 by columns into a matrix, a1 is one columns in x.
+X<-[,-4]: Deselect 4th column.
 X<-rbind(a1,a2): make vector a1 as a row in matrix x.
 
  z_score <-function(weight) {
@@ -32,6 +36,7 @@ rm(var): delete defined variable.
 
 library(psych)
 pcal<-principal(f_z,nfactors=13,rotate="none",scores=TRUE)
+pcal$loadings
 f_pca_13<-f_z
 f_pca_13[,3:15]<-pcal$scores
 f_pca_13<-f_pca_13[,1:15]

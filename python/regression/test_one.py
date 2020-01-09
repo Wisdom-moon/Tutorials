@@ -13,12 +13,13 @@ from sklearn import gaussian_process
 from sklearn import neighbors
 from sklearn import svm
 
-if len(sys.argv) < 3:
-    print 'Usage: ~ libsvm_file groups_file'
+if len(sys.argv) < 4:
+    print 'Usage: ~ libsvm_file groups_file p_id'
     quit()
 
 dat_file_name = sys.argv[1]
 dat_groups_name = sys.argv[2]
+test_id = (int(sys.argv[3]),0)
 
 if not os.path.isfile(dat_file_name):
     print dat_file_name + " not exist"
@@ -32,7 +33,7 @@ P_I_pairs = list()
 for eachLine in dat_groups_obj:
     ret = re.findall('\d+', eachLine)
     if ret is not None:
-        P_I_pairs.append((int(ret[0]), int(ret[1])))
+        P_I_pairs.append((int(ret[0]), int(ret[1]), int(ret[1])))
 P_I_pairs = np.asarray(P_I_pairs)
 groups = [a[0] for a in P_I_pairs]
 
@@ -48,9 +49,9 @@ X = X_dense
 logo = LeaveOneGroupOut()
 
 #regr_dct = MLPRegressor(hidden_layer_sizes=(80,60, 30, 30, 20, 20, 20), activation='logistic', solver='adam', learning_rate_init=0.0001, max_iter=500,random_state=1)
-#regr_dct = MLPRegressor(hidden_layer_sizes=(9,9,9), activation='tanh', solver='adam')
+regr_dct = MLPRegressor(hidden_layer_sizes=(4), activation='tanh', solver='adam')
 #regr_dct = MLPRegressor(hidden_layer_sizes=(100, 80,60), activation='logistic', solver='adam')
-regr_dct = tree.DecisionTreeRegressor()
+#regr_dct = tree.DecisionTreeRegressor()
 #regr_dct = ensemble.RandomForestRegressor(n_estimators=20)
 #regr_dct = gaussian_process.GaussianProcessRegressor(kernel=None)
 #regr_dct = neighbors.RadiusNeighborsRegressor(radius=1.0)
@@ -59,8 +60,10 @@ regr_dct = tree.DecisionTreeRegressor()
 scores_dct = list()
 
 P_scores = list()
-speedup_arry = np.zeros(100, dtype=[('x', float),('y', float)])
+speedup_arry = np.zeros(100, dtype=[('x', float),('y', float),('z', int)])
 for train, test in logo.split(X, y, groups=groups):
+    if test_id[0] != P_I_pairs[test][0][0]:
+	continue
     speedup_arry.fill(-np.inf)
     I_scores = list()
     #scaler = preprocessing.StandardScaler(with_mean=False).fit(X[train])
@@ -75,24 +78,21 @@ for train, test in logo.split(X, y, groups=groups):
 	input_id = p_i[1]
 	program_id = p_i[0]
 	if y_p > speedup_arry['y'][input_id]:
-	    speedup_arry['y'][input_id] = y_t
-	if y_t > speedup_arry['x'][input_id]:
+	    speedup_arry['y'][input_id] = y_p
 	    speedup_arry['x'][input_id] = y_t
-    #print 'Program ' + str(program_id) + ' :'
+	    speedup_arry['z'][input_id] = p_i[2]
+    print 'Program ' + str(program_id) + ' :'
     for speedup in speedup_arry:
 	if speedup['x'] > 0.0:
-	    score = speedup['y']
-	    #score = speedup['y']/speedup['x']
+	    score = speedup['x']
 	    I_scores.append(score)
-	    print score
-	    #sys.stdout.write(str(score) + ' ')
-    #sys.stdout.write('\n')
+	    print str(speedup['z']) + '\t' + str(score)
     P_scores.append(np.mean(I_scores))
 
 
 #Decision Tree Regression
-#print 'Score for Decision Tree'
-#print P_scores
-#print 'mean: ' + str(np.mean(P_scores)) + ' std: '  + str(np.std(P_scores))
+print 'Score for Regression'
+print P_scores
+print 'mean: ' + str(np.mean(P_scores)) + ' std: '  + str(np.std(P_scores))
 
 quit()

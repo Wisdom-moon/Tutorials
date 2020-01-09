@@ -25,3 +25,5 @@ for i in 1 2;do echo $i; awk '$1 == "2mm" {getline; print $0}' ./raw | awk -v th
 for i in 1 2 3 4 5 6 7 8 12 16 32 64 96 128 256 512;do awk '$1 == "2mm" {getline; print $0}' ./raw | awk -v threads=$i '$2 == threads {printf $4"\t"} END{printf "\n"}';done | xsel -b -i
 for i in 1 2 3 4 5 6 7 8 12 16 32 64 96 128 256 512;do awk -v threads=$i '$2==threads {printf $4"\t"} END{printf "\n"}' ./log;done | xsel -b -i
 awk 'BEGIN{pre_id = 0; data_id=0; program_id=1} /^[0-9]+/ {if ($1==1 && pre_id !=1) data_id+=1; pre_id = $1; printf program_id"\t"data_id"\t"$1"\t"; getline; printf $4"\n"}' ./parboil/bfs.log
+awk 'BEGIN{max = 0} /Program 1 / { getline; if ($2 > max) max = $2} END{print max}'  index.log
+awk 'BEGIN{p_id = 0; index_id = 0;best_mean = 0;best_id=0} /Program/ {if(p_id != $2) {print "Program "p_id":\t"best_id"\t"best_mean;index_id = 0;best_mean=0;best_id=0} p_id = $2; index_id=index_id+1}; /mean/ {if(best_mean < $2) {best_mean = $2; best_id = index_id}} END{print "Program "p_id":\t"best_id"\t"best_mean}' log
