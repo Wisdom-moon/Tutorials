@@ -48,3 +48,5 @@ tr -d "\r" < NetworkUtility.sh > cleaned.sh: Transfor windows style EOL "\r\n" i
 wget -r -l 2 https://pytorch.org/docs/stable/index.html: Recursive download files, limit the level of following links to 2.
 echo 3 > /proc/sys/vm/drop_caches: Release all cached memory.
 write user [tty]: Into message mode. Ctrl-D to end message.
+xinput list: list all input devices.
+xinput disable id: disable specific device.
