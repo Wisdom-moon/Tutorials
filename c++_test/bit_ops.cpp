@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+
+
 using namespace std;
 
 int main (int argc, char **argv)
@@ -18,4 +20,5 @@ int main (int argc, char **argv)
   if ( n & 4 )
   //if ( (n & 4) == 1)
     cout<<"Match 4\n";
+
 }

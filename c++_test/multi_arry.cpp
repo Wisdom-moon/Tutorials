@@ -60,4 +60,8 @@ int main (int argc, char **argv)
   printf("size = %d\n", sizeof (t_a));
   printf("size = %d\n", sizeof (t_b));
 
+
+  long addr[][2] = {1,2, 3,4, 5,6, 7,8};
+
+  printf("Addr: %ld, %ld\n", addr[2][0], addr[2][1]);
 }
