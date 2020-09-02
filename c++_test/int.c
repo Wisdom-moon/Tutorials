@@ -2,7 +2,7 @@
 
 int main(int argc, char **argv)
 {
-  long src = -128;
+  long src = -8;
 
   unsigned long usrc = *(unsigned long *)&src;
 

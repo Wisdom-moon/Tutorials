@@ -61,6 +61,11 @@ int main ()
     llvm::FunctionType::get (builder.getInt32Ty(), argsRef, true);
   llvm::Constant *putsFunc = module->getOrInsertFunction ("printf", putsType);
 
+//Create IntegerLiteral expression "0".
+  llvm::APInt int_val(64, 0, true);
+  QualType type = Ctx->getIntTypeForBitwidth(64, true);
+  IntegerLiteral *int_expr = new (*Ctx) IntegerLiteral(*Ctx, int_val, type, UnOp->getLocStart());
+
 //Call 'puts' in 'main'
   builder.CreateCall (putsFunc, helloWorld);
   builder.CreateRetVoid ();

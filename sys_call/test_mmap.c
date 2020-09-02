@@ -23,7 +23,7 @@ int main (int argc, char **argv) {
 
   *(long *) mapaddr1 = 0x1341;
 //  *(long *) mapaddr2 = 0x2222;
-//  *(long *) mapaddr3 = 0x3333;
+  *(long *) mapaddr3 = 0x3333;
 
   printf("%lx\n", *(long *) mapaddr2);
   printf("%lx\n", *(long *) mapaddr3);
@@ -31,14 +31,14 @@ int main (int argc, char **argv) {
   printf("%lx\n",  mapaddr2);
   printf("%lx\n",  mapaddr3);
 
-  close(fd);
-
   munmap(mapaddr1, 8);
   munmap(mapaddr2, 8);
   munmap(mapaddr3, 8);
 
   printf("%lx\n",  mapaddr2);
   printf("%lx\n",  mapaddr3);
+
+  close(fd);
   
   return 0;
 }

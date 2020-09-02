@@ -1,5 +1,18 @@
 #include <stdio.h>
 
+char * strno(int no)
+{
+  switch (no)
+  {
+    case 0:
+      return "SUCCESS!";
+    case 1:
+      return "FAILED!";
+    default:
+      return "UNDEFINED!";
+  }
+}
+
 int main(int argc, char **argv)
 {
   char buf[1024];
@@ -14,4 +27,5 @@ int main(int argc, char **argv)
 
   printf("%s", buf2);
   printf("CoreId %d\n", coreId);
+  printf("Ret %s\n", strno(1));
 }

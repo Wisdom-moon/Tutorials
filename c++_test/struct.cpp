@@ -65,6 +65,7 @@ int main (int argc, char ** argv) {
 
         struct DMA_cfg_opt1 dma_opt1;
         struct DMA_cfg_opt2 dma_opt2;
+        struct DMA_cfg_opt2 tmp;
         //Do not nedd to change.
         dma_opt1.link = 0;
         dma_opt1.ts = 1;
@@ -84,8 +85,11 @@ int main (int argc, char ** argv) {
           dma_opt2.bstep  = 1;
           dma_opt2.blocking_mode  = 0;
 
+ 	tmp = dma_opt2;
 	printf("opt1: %d\n opt2:%d\n",sizeof (struct DMA_cfg_opt1), sizeof (struct DMA_cfg_opt2));
 	printf("%ld\n%x\n", *(unsigned long *)&dma_opt1, *((unsigned long *)&dma_opt2));
+
+  	printf("%ld tmp.bshift = %d\n", *(unsigned long *)&tmp, tmp.bshift);
 
   return 0;
 }
