@@ -23,4 +23,6 @@ int main (int argc, char **argv)
 
   printf("a = %ld\n", a);
   printf("a = %lu\n", a);
+
+  printf("src = %9lx\n", src);
 }

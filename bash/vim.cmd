@@ -30,7 +30,7 @@ q{register}	record macro. q exit.
 0	move to begin of line.
 <C -l>		redraw screen.
 zz	move screen to center the cursor.
-
+~	switch char case.
 
 
 
@@ -77,3 +77,5 @@ bdelete N1 N2	deletet target buffers
 config:
 ~/.vim/vimrc: set "syntax enable\n syntax on", syntax file should put into ~/.vim/syntax/ dir
 
+Set colorscheme
+colorscheme <ron, zellner, pablo>

@@ -17,3 +17,5 @@ done
 echo $1
 
 cut -f 1,2,3,4 raw.log > tt
+
+rename 's/Sparc/MTX/g' ./*: batch rename file name.

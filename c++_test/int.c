@@ -8,6 +8,9 @@ int main(int argc, char **argv)
 
   long dst = usrc >> 3;
 
+  unsigned t = -1;
+
   printf("src=%ld\t%lx\n", src, src);
   printf("dst=%ld\t%lx\n", dst, dst);
+  printf("t=%ld\t%lx\n", t, t);
 }

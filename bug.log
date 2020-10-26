@@ -1,0 +1,3 @@
+LLVM Bug:
+1. Compiler compiler-rt .S file failed: It use "-x c" to compile asm files as C and then fail.
+  We just compile these asm files by hand.

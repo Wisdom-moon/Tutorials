@@ -70,5 +70,15 @@ int main ()
   builder.CreateCall (putsFunc, helloWorld);
   builder.CreateRetVoid ();
 
+//Get the type string.
+  llvm::Type *type;
+  std::string buf;
+  char * type_name;
+  raw_string_ostream os(buf);
+  type->print(os);
+  os.flush();
+  type_name = (char *)malloc(buf.size() + 1);
+  std::strcpy(type_name, buf.c_str());
+
   module->dump();
 }
